@@ -1,13 +1,14 @@
-import extensions.applyDefault
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
 
-plugins.apply(BuildPlugins.GIT_HOOKS)
-plugins.apply(BuildPlugins.UPDATE_DEPENDENCIES)
-
-allprojects {
-    repositories.applyDefault()
-
-    plugins.apply(BuildPlugins.DETEKT)
-    plugins.apply(BuildPlugins.DOKKA)
-    plugins.apply(BuildPlugins.KTLINT)
-    plugins.apply(BuildPlugins.SPOTLESS)
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.ksp) apply false
 }
