@@ -1,4 +1,0 @@
-package dependencies
-
-object TestAndroidDependencies {
-}

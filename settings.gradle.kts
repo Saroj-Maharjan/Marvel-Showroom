@@ -1,24 +1,27 @@
-////Include all the existent modules in the project
-//rootDir
-//    .walk()
-//    .maxDepth(1)
-//    .filter {
-//        it.name != "buildSrc" && it.isDirectory &&
-//                file("${it.absolutePath}/build.gradle.kts.kts").exists()
-//    }
-//    .forEach {
-//        include(":${it.name}")
-//    }
-
 include(
     ":app",
-//    ":core",
-//    ":features:home",
-//    ":features:characters_list",
-//    ":features:characters_favorites",
-//    ":libraries:test_utils",
 //    ":commons:ui",
-//    ":commons:views"
+//    ":commons:views",
+//    ":core:common",
+//    ":core:data",
+//    ":core:domain",
+////    ":features:home",
+//    ":features:dashboard"
 )
 
-rootProject.buildFileName = "build.gradle.kts"
+pluginManagement {
+    includeBuild("build-logic")
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+enableFeaturePreview("VERSION_CATALOGS")
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
